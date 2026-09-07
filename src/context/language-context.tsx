@@ -31,6 +31,10 @@ const LANGUAGE_STORAGE_KEY = "portfolio_language";
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY) as Language | null;
+      if (saved === "ar" || saved === "en") return saved;
+    }
     return (i18n.language as Language) || "en";
   });
 
@@ -40,7 +44,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (i18n.language !== initialLang) {
       i18n.changeLanguage(initialLang);
     }
-    setLanguageState(initialLang);
     document.documentElement.lang = initialLang;
     document.documentElement.dir = initialLang === "ar" ? "rtl" : "ltr";
 

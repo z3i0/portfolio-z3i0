@@ -33,6 +33,7 @@ export const DATA = {
   url: "https://dillion.io",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
+  githubUsername: "z3i0",
   description:
     "Software engineer and innovator. Passionate about modern technology, and capable of developing technical solutions for others.",
   summary:

@@ -28,5 +28,20 @@
   "viewCredential": "View Credential",
   "contactBadge": "Contact",
   "contactTitle": "Get in Touch",
-  "contactDescription": "Want to chat? Feel free to reach out directly and I'll respond whenever I can."
+  "contactDescription": "Want to chat? Feel free to reach out directly and I'll respond whenever I can.",
+  "githubActivityBadge": "GitHub Activity",
+  "githubActivityTitle": "Open Source & Contributions",
+  "githubActivitySubtitle": "A visual timeline of my code commits, pull requests, and open-source activity over the last year.",
+  "totalContributions": "Total Contributions",
+  "currentStreak": "Current Streak",
+  "longestStreak": "Longest Streak",
+  "activeDays": "Active Days",
+  "days": "days",
+  "less": "Less",
+  "more": "More",
+  "viewGitHubProfile": "View on GitHub",
+  "noContributionsOnDate": "No contributions on",
+  "contributionsOnDate": "contributions on",
+  "loadingContributions": "Loading GitHub activity...",
+  "errorLoadingContributions": "Could not load GitHub activity at the moment."
 }

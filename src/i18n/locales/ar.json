@@ -28,5 +28,20 @@
   "viewCredential": "معاينة الاعتماد",
   "contactBadge": "تواصل معي",
   "contactTitle": "ابقى على تواصل",
-  "contactDescription": "هل لديك فكرة مشروع أو ترغب في بدء تعاون تقني؟ لا تتردد في مراسلتي وسأجيبك في أقرب وقت."
+  "contactDescription": "هل لديك فكرة مشروع أو ترغب في بدء تعاون تقني؟ لا تتردد في مراسلتي وسأجيبك في أقرب وقت.",
+  "githubActivityBadge": "نشاط GitHub",
+  "githubActivityTitle": "مساهماتي ونشاطي البرمجي",
+  "githubActivitySubtitle": "سجل تفاعلي يوثق التزامات الكود، المشاريع مفتوحة المصدر، والمساهمات البرمجية خلال العام الماضي.",
+  "totalContributions": "إجمالي المساهمات",
+  "currentStreak": "التتابع الحالي",
+  "longestStreak": "أطول تتابع",
+  "activeDays": "أيام النشاط",
+  "days": "يوم",
+  "less": "أقل",
+  "more": "أكثر",
+  "viewGitHubProfile": "عرض الملف على GitHub",
+  "noContributionsOnDate": "لا توجد مساهمات في",
+  "contributionsOnDate": "مساهمة في",
+  "loadingContributions": "جاري تحميل نشاط GitHub...",
+  "errorLoadingContributions": "تعذر تحميل نشاط GitHub حالياً."
 }
