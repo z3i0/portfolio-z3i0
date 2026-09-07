@@ -22,7 +22,7 @@ export default function NotFound() {
                         <Link href="/">
                             <Button variant="outline" className="gap-2 cursor-pointer">
                                 <Home className="h-4 w-4" />
-                                Go to Home
+                                Back to Home
                             </Button>
                         </Link>
                     </div>

@@ -43,5 +43,6 @@
   "noContributionsOnDate": "No contributions on",
   "contributionsOnDate": "contributions on",
   "loadingContributions": "Loading GitHub activity...",
-  "errorLoadingContributions": "Could not load GitHub activity at the moment."
+  "errorLoadingContributions": "Could not load GitHub activity at the moment.",
+  "retry": "Retry"
 }

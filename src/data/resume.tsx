@@ -35,9 +35,9 @@ export const DATA = {
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   githubUsername: "z3i0",
   description:
-    "Software engineer and innovator. Passionate about modern technology, and capable of developing technical solutions for others.",
+    "Software engineer and innovator passionate about modern technology and developing impactful technical solutions.",
   summary:
-    "I’m a  and [BIS student](/#education) passionate about [building modern web applications](/#projects) and turning ideas into real-world products. I enjoy working across both [frontend and backend development](/#skills), exploring new technologies, and constantly improving my skills. I’m always looking for [opportunities to learn and build](/#contact), and work on [challenging projects](/#projects) that push me to grow.",
+    "I’m a full-stack developer and [BIS student](/#education) passionate about [building modern web applications](/#projects) and turning ideas into real-world products. I enjoy working across both [frontend and backend development](/#skills), exploring new technologies, and constantly improving my skills. I’m always looking for [opportunities to learn and build](/#contact) while tackling [challenging projects](/#projects) that push me to grow.",
   avatarUrl: "/me.jpg",
   skills: [
     // Backend
@@ -119,7 +119,7 @@ export const DATA = {
       start: "Jan 2026",
       end: "Present",
       description:
-        "• Engineered and deployed custom ERP features using Laravel and Python, expanding core operational capabilities.\n• Boosted client revenue by 10% through UI/UX optimizations and streamlined checkout/inventory workflows.\n• Managed end-to-end lifecycle from technical requirements gathering to remote deployment and maintenance.",
+        "• Engineered and deployed custom ERP features using Laravel and Python, expanding core operational capabilities.\n• Boosted client revenue by 10% through UI/UX optimizations and streamlined checkout/inventory workflows.\n• Managed the end-to-end lifecycle from technical requirements gathering to remote deployment and maintenance.",
     },
     {
       company: "3D Printing Company",
@@ -131,7 +131,7 @@ export const DATA = {
       start: "Oct 2025",
       end: "Present",
       description:
-        "• Managed daily production workflows and operational logistics, ensuring high-quality output and on-time delivery.\n• Coordinated cross-functional teams and internal communications, developing strong organization and client-facing processes.\n• Streamlined operations and integrated modern technical solutions to enhance overall workflow efficiency.",
+        "• Managed daily production workflows and operational logistics, ensuring high-quality output and on-time delivery.\n• Coordinated cross-functional teams and internal communications, developing strong organizational and client-facing processes.\n• Streamlined operations and integrated modern technical solutions to enhance overall workflow efficiency.",
     },
     {
       company: "Laravel Edu",
@@ -303,7 +303,7 @@ export const DATA = {
       dates: "Jul 2026",
       credentialId: "CSIPKJSJH5AZ",
       description:
-        "In-depth analysis of word formation, morphological patterns, grammatical agreements, and precise present tense usage for global collaboration.",
+        "In-depth analysis of word formation, morphological patterns, grammatical agreement, and precise present tense usage for global collaboration.",
       skills: ["English Proficiency", "Grammar & Syntax", "Vocabulary"],
       link: "https://www.coursera.org/account/accomplishments/records/CSIPKJSJH5AZ",
     },
@@ -318,7 +318,7 @@ export const DATA_AR = {
   description:
     "مهندس برمجيات ومبتكر. شغوف ببناء الأنظمة البرمجية وتطوير الحلول التقنية ومساعدة الآخرين.",
   summary:
-    "أنا مطور ويب متكامل و[طالب في تخصص نظم معلومات الأعمال (BIS)](/#education)، شغوف بـ [بناء تطبيقات ويب حديثة](/#projects) وتحويل الأفكار إلى منتجات حقيقية. أستمتع بالعمل عبر [تطوير الـ Frontend والـ Backend](/#skills)، واستكشاف التقنيات الجديدة، وتطوير مهاراتي باستمرار. وأسعى دائمًا لـ [فرص تساعدني على التعلم والبناء](/#contact)، والعمل على [مشاريع قوية](/#projects) تدفعني للتطور باستمرار.",
+    "أنا مطور ويب متكامل و[طالب في تخصص نظم معلومات الأعمال (BIS)](/#education)، شغوف [ببناء تطبيقات ويب حديثة](/#projects) وتحويل الأفكار إلى منتجات حقيقية. أستمتع بالعمل في [تطوير الواجهات الأمامية والخلفية (Full Stack)](/#skills)، واستكشاف التقنيات الجديدة، وتطوير مهاراتي باستمرار. وأسعى دائمًا إلى [اقتناص فرص جديدة للتعلم والبناء](/#contact)، والعمل على [مشاريع مميزة](/#projects) تدفعني للتطور باستمرار.",
   work: [
     {
       company: "Freelance (ERP System Company)",
@@ -336,8 +336,8 @@ export const DATA_AR = {
       company: "3D Printing Company",
       href: "#",
       badges: [],
-      location: "حضوري",
-      title: "مدير تشغيل",
+      location: "حضوريًا",
+      title: "مدير عمليات",
       logoUrl: "/orek.png",
       start: "أكتوبر 2025",
       end: "حتى الآن",
@@ -349,7 +349,7 @@ export const DATA_AR = {
       href: "#",
       badges: [],
       location: "مصر",
-      title: "مطور Full Stack",
+      title: "مطور ويب متكامل (Full Stack)",
       logoUrl: "",
       start: "2022",
       end: "2023",
@@ -382,7 +382,7 @@ export const DATA_AR = {
       dates: "يوليو 2026",
       active: true,
       description:
-        "تطبيق لسطح المكتب لنظام Windows يوفر ترجمة فورية وسلسة عبر اختصارات المفاتيح مع استبدال النص تلقائياً داخل أي تطبيق. يدعم مزودات ذكاء اصطناعي متعددة تشمل OpenAI و Gemini و DeepL و Ollama المحلية، مع ميزة الإدخال الصوتي وسجل ترجمة قابل للبحث والتصدير.",
+        "تطبيق لسطح المكتب لنظام Windows يوفر ترجمة فورية وسلسة عبر اختصارات لوحة المفاتيح مع استبدال النص تلقائيًا داخل أي تطبيق. يدعم مزودات ذكاء اصطناعي متعددة تشمل OpenAI وGemini وDeepL ونماذج Ollama المحلية، مع ميزة الإدخال الصوتي وسجل ترجمة قابل للبحث والتصدير.",
       technologies: [
         "Python",
         "PySide6",
@@ -409,7 +409,7 @@ export const DATA_AR = {
       dates: "أغسطس 2026",
       active: true,
       description:
-        "وكيل سطح مكتب لنظام Windows يربط أنظمة الـ ERP ونقاط البيع في Laravel بالطابعات الحرارية المحلية عبر WebSockets لحظية (Laravel Reverb). يقوم بتصيير إيصالات HTML وطباعتها فورياً بأوامر ESC/POS عبر TCP مع تشفير DPAPI وسجل طباعة محلي بـ SQLite.",
+        "برنامج لسطح المكتب لنظام Windows يربط أنظمة ERP ونقاط البيع المبنية بـ Laravel بالطابعات الحرارية المحلية عبر WebSockets لحظية (Laravel Reverb). يُصيّر إيصالات HTML ويطبعها فوريًا بأوامر ESC/POS عبر TCP مع تشفير DPAPI وسجل طباعة محلي عبر SQLite.",
       technologies: [
         "Python",
         "PySide6",
@@ -436,7 +436,7 @@ export const DATA_AR = {
       dates: "فبراير 2026",
       active: true,
       description:
-        "موقع تعريفي وتفاعلي حديث لأكاديمية رقص وفنون استعراضية، مبني باستخدام Vue 3 و Tailwind CSS. يتضمن استعراضاً تفاعلياً للبرامج التدريبية (الباليه، الهيب هوب، والباتشاتا)، معرض وسائط متجاوب، وآراء المتدربين مع تنقل سلس.",
+        "موقع تعريفي وتفاعلي حديث لأكاديمية رقص وفنون استعراضية، مبني باستخدام Vue 3 وTailwind CSS. يتضمن استعراضًا تفاعليًا للبرامج التدريبية (الباليه، والهيب هوب، والباتشاتا)، ومعرض وسائط متجاوبًا، وقسمًا لآراء المتدربين مع تجربة تنقل سلسة.",
       technologies: [
         "Vue.js",
         "Vite",
@@ -464,7 +464,7 @@ export const DATA_AR = {
       dates: "2025 - حتى الآن",
       active: true,
       description:
-        "لوحة تحكم وبوت ديسكورد متكامل لإدارة الخوادم يخدم أكثر من 380 خادماً و 160 ألف مستخدم. يتيح أتمتة الإشراف، إدارة الرومات الصوتية المؤقتة، الأنظمة الاقتصادية، مع لوحة تحكم تفاعلية متطورة لإدارة كافة الإعدادات لحظياً.",
+        "لوحة تحكم وبوت ديسكورد متكامل لإدارة الخوادم، يخدم أكثر من 380 خادمًا و160 ألف مستخدم. يتيح أتمتة الإشراف، وإدارة القنوات الصوتية المؤقتة، والأنظمة الاقتصادية، مع لوحة تحكم تفاعلية متطورة لإدارة جميع الإعدادات لحظيًا.",
       technologies: [
         "Laravel",
         "Inertia.js",
@@ -492,7 +492,7 @@ export const DATA_AR = {
       dates: "يوليو 2026",
       credentialId: "I7I0Y15O0YGV",
       description:
-        "تدريب شامل على أساسيات لغة Python، التفكير الخوارزمي، هياكل البيانات، بناء الدوال، والتحكم في سير البرامج البرمجية.",
+        "تدريب شامل على أساسيات لغة Python، والتفكير الخوارزمي، وهياكل البيانات، وبناء الدوال، والتحكم في تدفق تنفيذ البرامج.",
       skills: ["Python", "أساسيات البرمجة", "هياكل البيانات", "حل المشكلات"],
       link: "https://www.coursera.org/account/accomplishments/records/I7I0Y15O0YGV",
     },
@@ -503,7 +503,7 @@ export const DATA_AR = {
       dates: "أغسطس 2026",
       credentialId: "VJGGV0R1ATPV",
       description:
-        "دراسة متقدمة في قواعد اللغة الإنجليزية، صياغة الأسئلة، واستخدامات أزمنة المضارع المستمر والمستقبل للتواصل التقني والمهني الفعال.",
+        "دراسة متقدمة في قواعد اللغة الإنجليزية، صياغة الأسئلة، واستخدامات أزمنة المضارع المستمر والمستقبل للتواصل التقني والمهني الفعّال.",
       skills: ["التواصل بالإنجليزية", "قواعد اللغة", "الكتابة المهنية"],
       link: "https://www.coursera.org/account/accomplishments/records/VJGGV0R1ATPV",
     },

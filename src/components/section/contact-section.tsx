@@ -54,7 +54,7 @@ export default function ContactSection() {
             </>
           ) : (
             <>
-              Want to chat? Just shoot me a message on{" "}
+              Want to chat? Just shoot me a message via{" "}
               {data.contact.social && "LinkedIn" in data.contact.social && data.contact.social.LinkedIn ? (
                 <Link
                   href={data.contact.social.LinkedIn.url}

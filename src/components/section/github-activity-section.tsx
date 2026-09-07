@@ -107,7 +107,7 @@ export default function GithubActivitySection() {
 
   // Weekday indicators (Mon, Wed, Fri)
   const weekdays = language === "ar" 
-    ? ["", "إثنين", "", "أربعاء", "", "جمعة", ""]
+    ? ["", "الاثنين", "", "الأربعاء", "", "الجمعة", ""]
     : ["", "Mon", "", "Wed", "", "Fri", ""];
 
   return (
@@ -240,7 +240,7 @@ export default function GithubActivitySection() {
                   className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border bg-background hover:bg-muted transition-colors cursor-pointer"
                 >
                   <RefreshCw className="size-3" />
-                  <span>Retry</span>
+                  <span>{t.retry}</span>
                 </button>
               </div>
             ) : (
@@ -291,10 +291,24 @@ export default function GithubActivitySection() {
                           }
                           const count = day.count;
                           const formattedDate = formatDate(day.date);
-                          const tooltipText =
-                            count > 0
-                              ? `${count.toLocaleString(language === "ar" ? "ar-EG" : "en-US")} ${t.contributionsOnDate} ${formattedDate}`
-                              : `${t.noContributionsOnDate} ${formattedDate}`;
+                          let tooltipText = "";
+                          if (count > 0) {
+                            if (language === "ar") {
+                              if (count === 1) {
+                                tooltipText = `مساهمة واحدة في ${formattedDate}`;
+                              } else if (count === 2) {
+                                tooltipText = `مساهمتان في ${formattedDate}`;
+                              } else if (count >= 3 && count <= 10) {
+                                tooltipText = `${count.toLocaleString("ar-EG")} مساهمات في ${formattedDate}`;
+                              } else {
+                                tooltipText = `${count.toLocaleString("ar-EG")} مساهمة في ${formattedDate}`;
+                              }
+                            } else {
+                              tooltipText = `${count.toLocaleString("en-US")} ${count === 1 ? "contribution" : "contributions"} on ${formattedDate}`;
+                            }
+                          } else {
+                            tooltipText = `${t.noContributionsOnDate} ${formattedDate}`;
+                          }
 
                           return (
                             <Tooltip key={day.date}>
