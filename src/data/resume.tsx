@@ -166,6 +166,37 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Whisk",
+      href: "https://whisk-nu.vercel.app",
+      dates: "September 2026",
+      active: true,
+      description:
+        "A modern web application for exploring global culinary recipes, built with Next.js 16 and React 19. Features interactive preparation steps, seamless recipe search, and easy saving of favorite meals.",
+      technologies: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "Motion",
+        "shadcn/ui",
+        "TheMealDB API",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://whisk-z3i0.vercel.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/z3i0/whisk",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/whisk.gif",
+      video: "",
+    },
+    {
       title: "GlotWeave",
       href: "https://github.com/z3i0/GlotWeave",
       dates: "July 2026",
@@ -376,6 +407,37 @@ export const DATA_AR = {
     },
   ],
   projects: [
+    {
+      title: "Whisk",
+      href: "https://whisk-nu.vercel.app",
+      dates: "سبتمبر 2026",
+      active: true,
+      description:
+        "منصة ويب حديثة وسريعة لاستكشاف وصفات الطهي العالمية، مبنية باستخدام Next.js 16 وReact 19. تتيح تصفح آلاف الوصفات، متابعة خطوات التحضير التفاعلية، وحفظ الأكلات المفضلة للرجوع إليها في أي وقت.",
+      technologies: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "Motion",
+        "shadcn/ui",
+        "TheMealDB API",
+      ],
+      links: [
+        {
+          type: "الموقع",
+          href: "https://whisk-nu.vercel.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "الكود",
+          href: "https://github.com/z3i0/whisk",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/whisk.gif",
+      video: "",
+    },
     {
       title: "GlotWeave",
       href: "https://github.com/z3i0/GlotWeave",
