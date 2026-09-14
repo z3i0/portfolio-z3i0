@@ -38,7 +38,7 @@ export const DATA = {
     "Software engineer and innovator passionate about modern technology and developing impactful technical solutions.",
   summary:
     "I’m a full-stack developer and [BIS student](/#education) passionate about [building modern web applications](/#projects) and turning ideas into real-world products. I enjoy working across both [frontend and backend development](/#skills), exploring new technologies, and constantly improving my skills. I’m always looking for [opportunities to learn and build](/#contact) while tackling [challenging projects](/#projects) that push me to grow.",
-  avatarUrl: "/me.jpg",
+  avatarUrl: "/me.webp",
   skills: [
     // Backend
     { name: "PHP", category: "Backend", icon: Php },

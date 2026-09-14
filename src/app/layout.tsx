@@ -71,6 +71,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preload" as="image" href="/me.webp" type="image/webp" fetchPriority="high" />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative",

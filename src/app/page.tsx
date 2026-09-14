@@ -5,6 +5,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { AuroraText } from "@/components/ui/aurora-text"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Image from "next/image";
 import { getResumeData } from "@/data/resume";
 import { useLanguage } from "@/context/language-context";
 import Link from "next/link";
@@ -44,8 +45,18 @@ export default function Page() {
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
-              <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
-                <AvatarImage alt={data.name} src={data.avatarUrl} />
+              <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted overflow-hidden">
+                <Image
+                  src={data.avatarUrl}
+                  alt={data.name}
+                  width={128}
+                  height={128}
+                  priority
+                  fetchPriority="high"
+                  loading="eager"
+                  unoptimized
+                  className="aspect-square h-full w-full object-cover"
+                />
                 <AvatarFallback>{data.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
