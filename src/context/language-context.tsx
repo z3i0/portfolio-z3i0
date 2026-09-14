@@ -21,6 +21,7 @@ interface LanguageContextType {
   toggleLanguage: () => void;
   t: TranslationType;
   i18n: typeof i18n;
+  mounted: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
@@ -30,17 +31,18 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 const LANGUAGE_STORAGE_KEY = "portfolio_language";
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY) as Language | null;
-      if (saved === "ar" || saved === "en") return saved;
-    }
-    return (i18n.language as Language) || "en";
-  });
+  const [language, setLanguageState] = useState<Language>(
+    () => (i18n.language as Language) || "en"
+  );
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY) as Language | null;
     const initialLang: Language = saved === "ar" || saved === "en" ? saved : "en";
+    if (initialLang !== language) {
+      setLanguageState(initialLang);
+    }
     if (i18n.language !== initialLang) {
       i18n.changeLanguage(initialLang);
     }
@@ -85,6 +87,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
           toggleLanguage,
           t: currentTranslations,
           i18n,
+          mounted,
         }}
       >
         {children}

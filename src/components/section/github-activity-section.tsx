@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { Icons } from "@/components/icons";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useLanguage } from "@/context/language-context";
 import { getResumeData } from "@/data/resume";
 import { ArrowUpRight, CalendarDays, Flame, GitCommit, Trophy, RefreshCw } from "lucide-react";
@@ -25,6 +25,19 @@ export default function GithubActivitySection() {
   const [data, setData] = useState<ContributionData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [hoveredDay, setHoveredDay] = useState<{
+    day: ContributionDay;
+    x: number;
+    y: number;
+  } | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const handleScroll = () => setHoveredDay(null);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const fetchContributions = React.useCallback(async () => {
     setLoading(true);
@@ -102,6 +115,28 @@ export default function GithubActivitySection() {
       }).format(date);
     } catch {
       return dateStr;
+    }
+  };
+
+  const getTooltipText = (day: ContributionDay) => {
+    const count = day.count;
+    const formattedDate = formatDate(day.date);
+    if (count > 0) {
+      if (language === "ar") {
+        if (count === 1) {
+          return `مساهمة واحدة في ${formattedDate}`;
+        } else if (count === 2) {
+          return `مساهمتان في ${formattedDate}`;
+        } else if (count >= 3 && count <= 10) {
+          return `${count.toLocaleString("ar-EG")} مساهمات في ${formattedDate}`;
+        } else {
+          return `${count.toLocaleString("ar-EG")} مساهمة في ${formattedDate}`;
+        }
+      } else {
+        return `${count.toLocaleString("en-US")} ${count === 1 ? "contribution" : "contributions"} on ${formattedDate}`;
+      }
+    } else {
+      return `${t.noContributionsOnDate} ${formattedDate}`;
     }
   };
 
@@ -225,114 +260,97 @@ export default function GithubActivitySection() {
         </div>
 
         {/* Interactive Contribution Heatmap Calendar - Full Width without horizontal scroll */}
-        <div className="rounded-2xl border bg-card/50 backdrop-blur-xs p-3.5 sm:p-5 md:p-6 shadow-xs flex flex-col gap-4 overflow-hidden">
-          <TooltipProvider delayDuration={50}>
-            {loading ? (
-              <div className="flex flex-col gap-3 py-4 animate-pulse">
-                <div className="h-4 w-48 bg-muted rounded" />
-                <div className="h-28 sm:h-32 w-full bg-muted/40 rounded-xl" />
+        <div
+          onMouseLeave={() => setHoveredDay(null)}
+          className="rounded-2xl border bg-card/50 backdrop-blur-xs p-3.5 sm:p-5 md:p-6 shadow-xs flex flex-col gap-4 overflow-hidden relative"
+        >
+          {loading ? (
+            <div className="flex flex-col gap-3 py-4 animate-pulse">
+              <div className="h-4 w-48 bg-muted rounded" />
+              <div className="h-28 sm:h-32 w-full bg-muted/40 rounded-xl" />
+            </div>
+          ) : error ? (
+            <div className="flex flex-col items-center justify-center py-8 gap-3 text-center">
+              <p className="text-sm text-muted-foreground">{t.errorLoadingContributions}</p>
+              <button
+                onClick={fetchContributions}
+                className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border bg-background hover:bg-muted transition-colors cursor-pointer"
+              >
+                <RefreshCw className="size-3" />
+                <span>{t.retry}</span>
+              </button>
+            </div>
+          ) : (
+            <div className="w-full select-none flex flex-col gap-1">
+              {/* Month labels row */}
+              <div className="flex items-center w-full">
+                {/* Spacer matching weekday column on sm+ screens */}
+                <div className="w-5 sm:w-7 shrink-0 hidden sm:block" />
+                <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-[1.5px] sm:gap-[2px] w-full text-[9px] sm:text-[10px] text-muted-foreground font-medium h-4 relative">
+                  {weeks.map((_, weekIndex) => {
+                    const month = monthLabels.find((m) => m.weekIndex === weekIndex);
+                    return (
+                      <div key={weekIndex} className="relative">
+                        {month && (
+                          <span className="absolute start-0 -top-0.5 whitespace-nowrap">
+                            {month.label}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            ) : error ? (
-              <div className="flex flex-col items-center justify-center py-8 gap-3 text-center">
-                <p className="text-sm text-muted-foreground">{t.errorLoadingContributions}</p>
-                <button
-                  onClick={fetchContributions}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border bg-background hover:bg-muted transition-colors cursor-pointer"
-                >
-                  <RefreshCw className="size-3" />
-                  <span>{t.retry}</span>
-                </button>
-              </div>
-            ) : (
-              <div className="w-full select-none flex flex-col gap-1">
-                {/* Month labels row */}
-                <div className="flex items-center w-full">
-                  {/* Spacer matching weekday column on sm+ screens */}
-                  <div className="w-5 sm:w-7 shrink-0 hidden sm:block" />
-                  <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-[1.5px] sm:gap-[2px] w-full text-[9px] sm:text-[10px] text-muted-foreground font-medium h-4 relative">
-                    {weeks.map((_, weekIndex) => {
-                      const month = monthLabels.find((m) => m.weekIndex === weekIndex);
-                      return (
-                        <div key={weekIndex} className="relative">
-                          {month && (
-                            <span className="absolute start-0 -top-0.5 whitespace-nowrap">
-                              {month.label}
-                            </span>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
+
+              {/* Heatmap Grid + Weekday labels */}
+              <div className="flex items-stretch w-full">
+                {/* Weekday indicators column */}
+                <div className="w-5 sm:w-7 shrink-0 hidden sm:grid grid-rows-7 gap-[1.5px] sm:gap-[2px] text-[8px] sm:text-[9px] text-muted-foreground font-medium select-none">
+                  {weekdays.map((day, idx) => (
+                    <div key={idx} className="flex items-center leading-none">
+                      {day}
+                    </div>
+                  ))}
                 </div>
 
-                {/* Heatmap Grid + Weekday labels */}
-                <div className="flex items-stretch w-full">
-                  {/* Weekday indicators column */}
-                  <div className="w-5 sm:w-7 shrink-0 hidden sm:grid grid-rows-7 gap-[1.5px] sm:gap-[2px] text-[8px] sm:text-[9px] text-muted-foreground font-medium select-none">
-                    {weekdays.map((day, idx) => (
-                      <div key={idx} className="flex items-center leading-none">
-                        {day}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Columns of weeks */}
-                  <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-[1.5px] sm:gap-[2px] w-full">
-                    {weeks.map((week, weekIndex) => (
-                      <div key={weekIndex} className="grid grid-rows-7 gap-[1.5px] sm:gap-[2px]">
-                        {week.map((day, dayIdx) => {
-                          if (!day || !day.date) {
-                            return (
-                              <div
-                                key={`empty-${dayIdx}`}
-                                className="aspect-square w-full opacity-0 pointer-events-none"
-                              />
-                            );
-                          }
-                          const count = day.count;
-                          const formattedDate = formatDate(day.date);
-                          let tooltipText = "";
-                          if (count > 0) {
-                            if (language === "ar") {
-                              if (count === 1) {
-                                tooltipText = `مساهمة واحدة في ${formattedDate}`;
-                              } else if (count === 2) {
-                                tooltipText = `مساهمتان في ${formattedDate}`;
-                              } else if (count >= 3 && count <= 10) {
-                                tooltipText = `${count.toLocaleString("ar-EG")} مساهمات في ${formattedDate}`;
-                              } else {
-                                tooltipText = `${count.toLocaleString("ar-EG")} مساهمة في ${formattedDate}`;
-                              }
-                            } else {
-                              tooltipText = `${count.toLocaleString("en-US")} ${count === 1 ? "contribution" : "contributions"} on ${formattedDate}`;
-                            }
-                          } else {
-                            tooltipText = `${t.noContributionsOnDate} ${formattedDate}`;
-                          }
-
+                {/* Columns of weeks */}
+                <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-[1.5px] sm:gap-[2px] w-full">
+                  {weeks.map((week, weekIndex) => (
+                    <div key={weekIndex} className="grid grid-rows-7 gap-[1.5px] sm:gap-[2px]">
+                      {week.map((day, dayIdx) => {
+                        if (!day || !day.date) {
                           return (
-                            <Tooltip key={day.date}>
-                              <TooltipTrigger asChild>
-                                <div
-                                  className={cn(
-                                    "aspect-square w-full rounded-[1px] sm:rounded-[2px] cursor-pointer transition-transform duration-100 hover:scale-125 hover:z-20 hover:ring-1 sm:hover:ring-2 hover:ring-ring",
-                                    LEVEL_CLASSES[day.level] || LEVEL_CLASSES[0]
-                                  )}
-                                />
-                              </TooltipTrigger>
-                              <TooltipContent side="top" className="text-xs py-1 px-2.5 shadow-md">
-                                {tooltipText}
-                              </TooltipContent>
-                            </Tooltip>
+                            <div
+                              key={`empty-${dayIdx}`}
+                              className="aspect-square w-full opacity-0 pointer-events-none"
+                            />
                           );
-                        })}
-                      </div>
-                    ))}
-                  </div>
+                        }
+
+                        return (
+                          <div
+                            key={day.date}
+                            onMouseEnter={(e) => {
+                              const rect = e.currentTarget.getBoundingClientRect();
+                              setHoveredDay({
+                                day,
+                                x: rect.left + rect.width / 2,
+                                y: rect.top,
+                              });
+                            }}
+                            className={cn(
+                              "aspect-square w-full rounded-[1px] sm:rounded-[2px] cursor-pointer transition-transform duration-100 hover:scale-125 hover:z-20 hover:ring-1 sm:hover:ring-2 hover:ring-ring",
+                              LEVEL_CLASSES[day.level] || LEVEL_CLASSES[0]
+                            )}
+                          />
+                        );
+                      })}
+                    </div>
+                  ))}
                 </div>
               </div>
-            )}
-          </TooltipProvider>
+            </div>
+          )}
 
           {/* Footer: GitHub profile link + Legend */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 border-t border-border/40">
@@ -369,6 +387,42 @@ export default function GithubActivitySection() {
           </div>
         </div>
       </div>
+
+      {/* Floating Outside Tooltip Portal */}
+      {mounted && hoveredDay && typeof window !== "undefined" && createPortal(
+        (() => {
+          const isFlipped = hoveredDay.y < 50;
+          const safeX = Math.max(130, Math.min(window.innerWidth - 130, hoveredDay.x));
+          const arrowOffset = hoveredDay.x - safeX;
+
+          return (
+            <div
+              className={cn(
+                "fixed z-50 pointer-events-none px-3 py-1.5 rounded-md bg-primary text-primary-foreground text-xs font-medium shadow-md whitespace-nowrap transition-[left,top] duration-75 ease-out animate-in fade-in-0 zoom-in-95",
+                isFlipped ? "-translate-x-1/2" : "-translate-x-1/2 -translate-y-full"
+              )}
+              style={{
+                left: `${safeX}px`,
+                top: `${isFlipped ? hoveredDay.y + 22 : hoveredDay.y - 8}px`,
+              }}
+            >
+              {getTooltipText(hoveredDay.day)}
+              <div
+                className={cn(
+                  "absolute -translate-x-1/2 border-x-4 border-x-transparent",
+                  isFlipped
+                    ? "-top-1 border-b-4 border-b-primary"
+                    : "-bottom-1 border-t-4 border-t-primary"
+                )}
+                style={{
+                  left: `calc(50% + ${arrowOffset}px)`,
+                }}
+              />
+            </div>
+          );
+        })(),
+        document.body
+      )}
     </section>
   );
 }

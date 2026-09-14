@@ -30,7 +30,7 @@ export default function Page() {
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
             <div className="gap-2 flex flex-col order-2 md:order-1">
               <BlurFade delay={BLUR_FADE_DELAY}>
-                <h1 className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl">
+                <h1 suppressHydrationWarning className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl">
                   {t.greeting}{" "}
                   <AuroraText key={`aurora-${language}`}>
                     {data.name.split(" ")[0]}
