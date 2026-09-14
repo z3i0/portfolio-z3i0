@@ -166,6 +166,38 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Qiraya",
+      href: "https://qiraya-z3i0.vercel.app",
+      dates: "September 2026",
+      active: true,
+      description:
+        "A distraction-free Quran web app and PWA featuring verse-by-verse recitation highlighting with 200+ reciters, dynamic typography scaling, instant search, and offline reading support.",
+      technologies: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "Motion",
+        "next-intl",
+        "PWA",
+        "Al Quran Cloud API",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://qiraya-z3i0.vercel.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/z3i0/qiraya",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/qiraya.gif",
+      video: "",
+    },
+    {
       title: "Whisk",
       href: "https://whisk-nu.vercel.app",
       dates: "September 2026",
@@ -407,6 +439,38 @@ export const DATA_AR = {
     },
   ],
   projects: [
+    {
+      title: "Qiraya",
+      href: "https://qiraya-z3i0.vercel.app",
+      dates: "سبتمبر 2026",
+      active: true,
+      description:
+        "منصة وتطبيق ويب تقدمي (PWA) لقراءة وتدبر القرآن الكريم بدون إعلانات. يدعم +200 قارئ مع تظليل الآيات المتلوة، بحث فوري ذكي، ومزامنة علامات القراءة دون اتصال.",
+      technologies: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "Motion",
+        "next-intl",
+        "PWA",
+        "Al Quran Cloud API",
+      ],
+      links: [
+        {
+          type: "الموقع",
+          href: "https://qiraya-z3i0.vercel.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "الكود",
+          href: "https://github.com/z3i0/qiraya",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/qiraya.gif",
+      video: "",
+    },
     {
       title: "Whisk",
       href: "https://whisk-nu.vercel.app",
