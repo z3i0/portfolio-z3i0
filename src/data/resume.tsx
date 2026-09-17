@@ -166,6 +166,37 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Shopless",
+      href: "https://shopless-bay.vercel.app",
+      dates: "September 2026",
+      active: true,
+      description:
+        "A clean and responsive e-commerce storefront focused on smooth user experience. Includes instant product filtering, animated cart interactions, simulated checkout flows, and real-time order tracking.",
+      technologies: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "shadcn/ui",
+        "Zustand",
+        "DummyJSON API",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://shopless-bay.vercel.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/z3i0/shopless",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/shopless.png",
+      video: "",
+    },
+    {
       title: "Qiraya",
       href: "https://qiraya-z3i0.vercel.app",
       dates: "September 2026",
@@ -439,6 +470,37 @@ export const DATA_AR = {
     },
   ],
   projects: [
+    {
+      title: "Shopless",
+      href: "https://shopless-bay.vercel.app",
+      dates: "سبتمبر 2026",
+      active: true,
+      description:
+        "متجر إلكتروني يركز على تجربة تسوق سريعة وبسيطة، مع فلترة فورية للمنتجات، تأثيرات تفاعلية لإضافة العناصر للسلة، محاكاة لعمليات الدفع، وتتبع مباشر للطلبات.",
+      technologies: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "shadcn/ui",
+        "Zustand",
+        "DummyJSON API",
+      ],
+      links: [
+        {
+          type: "الموقع",
+          href: "https://shopless-bay.vercel.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "الكود",
+          href: "https://github.com/z3i0/shopless",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/shopless.png",
+      video: "",
+    },
     {
       title: "Qiraya",
       href: "https://qiraya-z3i0.vercel.app",
